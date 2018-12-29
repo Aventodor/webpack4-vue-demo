@@ -2,9 +2,9 @@
   "name": "webpack4-vue-demo",
   "version": "1.0.0",
   "description": "A webpack4-vue demo",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --config webpack.config.js --progress --inline"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Aventodor/webpack4-vue-demo/issues"
   },
-  "homepage": "https://github.com/Aventodor/webpack4-vue-demo#readme"
+  "homepage": "https://github.com/Aventodor/webpack4-vue-demo#readme",
+  "devDependencies": {
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
+  }
 }
