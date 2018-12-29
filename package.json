@@ -1,0 +1,19 @@
+{
+  "name": "webpack4-vue-demo",
+  "version": "1.0.0",
+  "description": "A webpack4-vue demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aventodor/webpack4-vue-demo.git"
+  },
+  "author": "gpc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aventodor/webpack4-vue-demo/issues"
+  },
+  "homepage": "https://github.com/Aventodor/webpack4-vue-demo#readme"
+}
