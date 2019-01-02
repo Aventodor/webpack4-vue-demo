@@ -11,6 +11,21 @@ const config = {
     filename: '[name].bundle.js',
     path: path.join(__dirname, '../dist')
   },
+  module: {
+    rules: [
+      {
+        test: /.ejs$/,
+        use: ['ejs-loader']
+      },
+      {
+        test: /.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin(
       ['dist'],
