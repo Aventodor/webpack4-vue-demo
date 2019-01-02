@@ -4,7 +4,7 @@
   "description": "A webpack4-vue demo",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --config webpack.config.js --progress --inline"
+    "build": "webpack --config config/webpack.config.js --progress --inline"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Aventodor/webpack4-vue-demo#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2"
   }
