@@ -1,6 +1,6 @@
 // modal.js
 import template from './modal.ejs'
-// import './modal.css'
+import './modal.css'
 
 export default function modal () {
   return {

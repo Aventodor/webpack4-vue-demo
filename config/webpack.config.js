@@ -23,6 +23,18 @@ const config = {
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /.(jpg|jpeg|png|gif|svg)$/,
+        use:  [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[name]-[hash:5].[ext]',
+              limit: 1024
+            }
+          }
+        ]
       }
     ]
   },
