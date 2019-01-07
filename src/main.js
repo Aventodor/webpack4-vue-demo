@@ -1,4 +1,5 @@
 import Modal from './components/modal/modal'
+import './assets/style/common.less'
 
 const App = function () {
   let div = document.createElement('div')
