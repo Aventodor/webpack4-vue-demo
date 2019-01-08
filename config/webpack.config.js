@@ -2,9 +2,17 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const createVueLoaderOptions = require('./vue-loader.config')
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const config = {
-  mode: 'none',
+  mode: isDev ? 'development' : 'production',
+  externals: {
+    vue: 'Vue',
+    jquery: 'jQuery'
+  },
   entry: {
     main: path.join(__dirname, '../src/main.js')
   },
@@ -15,16 +23,18 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: createVueLoaderOptions(isDev)
+      },
+      {
         test: /\.ejs$/,
         use: ['ejs-loader']
       },
       {
         test: /\.css$/,
         use: [
-          // 'style-loader',
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
+          isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { importLoaders: 1 } },
           'postcss-loader'
         ]
@@ -32,12 +42,14 @@ const config = {
       {
         test: /\.less$/,
         use: [
-          // 'style-loader',
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
+          isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
           'less-loader'
         ]
       },
@@ -56,11 +68,10 @@ const config = {
     ]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      // chunkFilename: "[id].css",
+      filename: "[name].css"
     }),
     new CleanWebpackPlugin(
       ['dist'],
@@ -76,7 +87,22 @@ const config = {
         removeComments: true
       }
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          priority: -10
+        }
+      }
+    },
+    runtimeChunk: {
+      name: 'runtime'
+    }
+  }
 }
 
 module.exports = config
