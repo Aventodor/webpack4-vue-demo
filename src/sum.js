@@ -1,6 +1,5 @@
 // ES Mudule 规范
-import _ from 'lodash'
-console.log(_.camelCase('foo Bar'))
+import './helper'
 export default function (a, b) {
   return a + b
 }
