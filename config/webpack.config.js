@@ -16,7 +16,7 @@ const config = {
     jquery: 'jQuery'
   },
   entry: {
-    app: path.join(__dirname, '../src/app.js'),
+    // app: path.join(__dirname, '../src/app.js'),
     main: path.join(__dirname, '../src/main.js')
   },
   output: {
@@ -72,14 +72,19 @@ const config = {
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',
-      /*cacheGroups: {
+      chunks: 'initial',
+      cacheGroups: {
+        /*commons: {
+          name: "commons",
+          chunks: "initial",
+          minChunks: 2
+        },*/
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
           priority: 1
         },
-        lib: {
+        /*lib: {
           test: /lodash/,
           name: 'lib',
           priority: 2
@@ -88,12 +93,13 @@ const config = {
           test: /helper.js/,
           minSize: 1,
           name: 'helper',
-          minChunks: 1
-        }
-      }*/
+          minChunks: 1,
+          priority: 3
+        }*/
+      }
     },
     runtimeChunk: {
-      // name: 'runtime'
+      name: entrypoint => `manifest.${entrypoint.name}`
     }
   },
   plugins: [
@@ -108,15 +114,16 @@ const config = {
         root: path.join(__dirname, '../')
       }
     ),
-    /*new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: path.join(__dirname, '../index.html'),
       inject: true,
       minify: {
         removeComments: true
       }
-    })*/
-    new HtmlWebpackPlugin({
+    })
+    /*new HtmlWebpackPlugin({
       chunks: ['main'],
+      // excludeChunks: ['app'],
       filename: 'main.html',
       template: path.join(__dirname, '../index.html'),
       inject: true,
@@ -125,15 +132,15 @@ const config = {
       }
     }),
     new HtmlWebpackPlugin({
-      title: 'app',
       chunks: ['app'],
+      // excludeChunks: ['main'],
       filename: 'app.html',
       template: path.join(__dirname, '../app.html'),
       inject: true,
       minify: {
         removeComments: true
       }
-    })
+    })*/
   ]
 }
 
