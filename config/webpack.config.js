@@ -9,10 +9,10 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const isDev = process.env.NODE_ENV === 'development'
 
 const config = {
-  mode: isDev ? 'development' : 'production',
-  // mode: 'none',
+  // mode: isDev ? 'development' : 'production',
+  mode: 'none',
   externals: {
-    vue: 'Vue',
+    // vue: 'Vue',
     jquery: 'jQuery'
   },
   entry: {
@@ -73,23 +73,24 @@ const config = {
   optimization: {
     splitChunks: {
       chunks: 'initial',
+      automaticNameDelimiter: '.',
       cacheGroups: {
-        /*commons: {
+        commons: {
           name: "commons",
           chunks: "initial",
-          minChunks: 2
-        },*/
+          minChunks: 2,
+          priority: 3
+        },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
           priority: 1
         },
         /*lib: {
           test: /lodash/,
           name: 'lib',
           priority: 2
-        },
-        helper: {
+        },*/
+        /*helper: {
           test: /helper.js/,
           minSize: 1,
           name: 'helper',
@@ -122,7 +123,7 @@ const config = {
       }
     })
     /*new HtmlWebpackPlugin({
-      chunks: ['main'],
+      chunks: ['main','vendors.main','manifest.main','commons'],
       // excludeChunks: ['app'],
       filename: 'main.html',
       template: path.join(__dirname, '../index.html'),
@@ -132,7 +133,7 @@ const config = {
       }
     }),
     new HtmlWebpackPlugin({
-      chunks: ['app'],
+      chunks: ['app','vendors.app','manifest.app','commons'],
       // excludeChunks: ['main'],
       filename: 'app.html',
       template: path.join(__dirname, '../app.html'),

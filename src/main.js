@@ -1,7 +1,8 @@
 import Modal from './components/modal/modal'
+// const Modal = () => import('./components/modal/modal')
 import './assets/style/common.less'
 import _ from 'lodash'
-import sum from './sum'
+// import sum from './sum'
 import axios from 'axios'
 // import Vue from 'vue'
 const App = function () {
@@ -15,9 +16,9 @@ const App = function () {
     content: '内容',
     footer: '底部'
   })
-  console.log(_.camelCase('Foo Bar'))
-  console.log(sum(1,2))
 }
 const app = new App()
+// console.log(sum(1,2))
+console.log(_.camelCase('Foo Bar'))
 // new Vue()
 axios.get('aaa')
