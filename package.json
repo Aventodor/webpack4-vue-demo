@@ -4,7 +4,7 @@
   "description": "A webpack4-vue demo",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.js --progress --inline"
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.js --progress --inline --colors"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/Aventodor/webpack4-vue-demo#readme",
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "autoprefixer": "^9.4.4",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^1.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
