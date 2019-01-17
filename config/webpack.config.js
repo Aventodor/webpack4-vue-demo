@@ -26,6 +26,12 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(vue|js|jsx)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre'
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
@@ -63,7 +69,7 @@ const config = {
       },
       {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
-        use:  [
+        use: [
           {
             loader: 'url-loader',
             options: {
@@ -81,27 +87,27 @@ const config = {
       automaticNameDelimiter: '.',
       cacheGroups: {
         commons: {
-          name: "commons",
-          chunks: "initial",
+          name: 'commons',
+          chunks: 'initial',
           minChunks: 2,
           priority: 3
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: 1
-        },
-        /*lib: {
+        }
+        /* lib: {
           test: /lodash/,
           name: 'lib',
           priority: 2
-        },*/
-        /*helper: {
+        }, */
+        /* helper: {
           test: /helper.js/,
           minSize: 1,
           name: 'helper',
           minChunks: 1,
           priority: 3
-        }*/
+        } */
       }
     },
     runtimeChunk: {
@@ -112,7 +118,7 @@ const config = {
     // new BundleAnalyzerPlugin(),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].css"
+      filename: '[name].css'
     }),
     new CleanWebpackPlugin(
       ['dist'],
@@ -127,7 +133,7 @@ const config = {
         removeComments: true
       }
     })
-    /*new HtmlWebpackPlugin({
+    /* new HtmlWebpackPlugin({
       chunks: ['main','vendors.main','manifest.main','commons'],
       // excludeChunks: ['app'],
       filename: 'main.html',
@@ -146,7 +152,7 @@ const config = {
       minify: {
         removeComments: true
       }
-    })*/
+    }) */
   ]
 }
 
