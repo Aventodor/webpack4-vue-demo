@@ -1,7 +1,7 @@
 .modal-parent{
      width: 500px;
      height: auto;
-     border: 1px solid #ddd;
+     border: 1px solid #f00;
      border-radius: 10px;
  }
 .modal-title{

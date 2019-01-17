@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A webpack4-vue demo",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.js --progress --inline --colors",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.build.js --progress --inline --colors",
     "lint": "eslint --ext .js --ext .vue src/",
     "lint-fix": "eslint --fix --ext .js --ext .vue src/"
   },
@@ -50,7 +51,9 @@
     "vue-template-compiler": "^2.5.21",
     "webpack": "^4.28.2",
     "webpack-bundle-analyzer": "^3.0.3",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "axios": "^0.18.0",
