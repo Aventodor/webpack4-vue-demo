@@ -1,7 +1,6 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const merge = require('webpack-merge')
 const common = require('./webpack.config.js')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -43,7 +42,6 @@ module.exports = merge(common, {
   },
   plugins: [
     // new BundleAnalyzerPlugin(),
-    // new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),

@@ -1,12 +1,17 @@
 {
-  "extends": "standard",
+  "extends": [
+    "plugin:vue/essential",
+    "standard"
+  ],
   "plugins": [
-    "html"
+    "vue"
   ],
   "parserOptions":{
     "parser": "babel-eslint"
   },
   "rules": {
-    "no-new": "off"
+    "no-new": "off",
+    "object-curly-spacing": [0, "never"],
+    "spaced-comment": "off"
   }
 }

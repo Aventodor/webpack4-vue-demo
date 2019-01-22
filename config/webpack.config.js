@@ -3,18 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const createVueLoaderOptions = require('./vue-loader.config')
+const webpack = require('webpack')
 
 const isDev = process.env.NODE_ENV === 'development'
 
 const config = {
-  // mode: isDev ? 'development' : 'production',
-  // externals: {
-  //   vue: 'Vue',
-  //   jquery: 'jQuery'
-  // },
+  externals: {
+    vue: 'Vue',
+    jquery: 'jQuery'
+  },
   entry: {
-    // app: path.join(__dirname, '../src/app.js'),
-    main: path.join(__dirname, '../src/main.js')
+    app: path.join(__dirname, '../src/app.js')
   },
   output: {
     filename: '[name].bundle.js',
@@ -37,10 +36,6 @@ const config = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: createVueLoaderOptions(isDev)
-      },
-      {
-        test: /\.ejs$/,
-        use: ['ejs-loader']
       },
       {
         test: /\.css$/,
@@ -79,9 +74,14 @@ const config = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: isDev ? '"development"' : '"production"'
+      }
+    }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../index.html'),
+      template: path.join(__dirname, '../app.html'),
       inject: true,
       minify: {
         removeComments: true
