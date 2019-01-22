@@ -1,17 +1,14 @@
 <template>
   <div>
-    <h1 class="red">
-      {{text}}
-      {{msg}}
-    </h1>
-    <p>
-      <img src="./assets/img/bg.jpg"/>
-    </p>
+    <h1>this is main</h1>
+    <router-link to="/login">login</router-link>
+    <router-link to="/center">center</router-link>
+    <router-view/>
   </div>
 </template>
 <script>
 import _ from 'lodash'
-import $ from 'jquery'
+// import $ from 'jquery'
 
 export default {
   computed: {
@@ -25,15 +22,12 @@ export default {
     }
   },
   mounted () {
-    console.log($('.red').html())
-    this.$axios.post('/topics', {page: 1, tab: 'job'}).then(res => {
-      console.log(res)
-    })
+    // console.log($('.red').html())
   }
 }
 </script>
-<style lang="less">
-  @import "assets/style/common.less";
+<style>
+  /*@import "assets/style/common.less";*/
   /*@import "assets/style/basic.css";*/
   .red {
     color: red;
