@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>this is main</h1>
-    <router-link to="/login">login</router-link>
-    <router-link to="/center">center</router-link>
-    <router-view/>
+    <h1 class="red">{{text }} this is main</h1>
+    <!--<router-link to="/login">login</router-link>-->
+    <!--<router-link to="/center">center</router-link>-->
+    <!--<router-view/>-->
   </div>
 </template>
 <script>
@@ -22,6 +22,7 @@ export default {
     }
   },
   mounted () {
+    console.log('app is mounted')
     // console.log($('.red').html())
   }
 }

@@ -1,4 +1,4 @@
-module.exports = function(isDev){
+module.exports = function (isDev) {
   return {
     preserveWhiteSpace: true,
     extractCss: !isDev,
